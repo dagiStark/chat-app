@@ -41,7 +41,7 @@ export const signup = async (req, res) => {
       res.status(400).json({ Error: "Failed to create new user" });
     }
   } catch (error) {
-    res.status(500).json({ Error: "Error while signing up a user" });
+    res.status(500).json({ Error: "Internal server error" });
   }
 };
 
@@ -63,7 +63,7 @@ export const login = async (req, res) => {
       profilePic: user.profilePic,
     });
   } catch (error) {
-    res.status(500).json({ Error: "Error while logging in!" });
+    res.status(500).json({ Error: "Internal server error" });
   }
 };
 
@@ -72,6 +72,6 @@ export const logout =  async(req, res) => {
     res.cookie("jwt", "", {maxAge: 0})
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
-    res.status(500).json({Error: "Error while logging out"})
+    res.status(500).json({Error: "Internal server error"})
   }
 };

@@ -27,10 +27,27 @@ export const sendMessage = async (req, res) => {
       conversation.messages.push(newMessage._id);
     }
 
-    await Promise.all([conversation.save(), newMessage.save()]);  // parallel execution
+    await Promise.all([conversation.save(), newMessage.save()]); // parallel execution
 
     res.status(201).json(newMessage);
   } catch (error) {
     res.status(500).json({ Error: "can't send the message!" });
+  }
+};
+
+export const getMessages = async (req, res) => {
+  try {
+    const { id: userToChat } = req.params;
+    const senderId = req.user._id;
+
+    const conversation = await Conversation.findOne({
+      participants: { $all: [senderId, userToChat] },
+    }).populate("messages"); // not ref actual messages
+
+    if (!conversation) return res.status(200).json([]);
+
+    res.status(200).json(conversation.messages);
+  } catch (error) {
+    res.status(500).json({ Error: "can't get the message!" });
   }
 };

@@ -1,4 +1,25 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import GenderCheckBox from "./GenderCheckBox";
+import userSignUp from "../../hooks/userSignUp";
+
 const SignUp = () => {
+  const [inputs, setInputs] = useState({
+    fullName: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    gender: "",
+  });
+  const {loading, signUp} = userSignUp();
+
+  const handleCheckBox = (gender) => {
+    setInputs({ ...inputs, gender });
+  };
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    await signUp(inputs)
+  };
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div
@@ -9,7 +30,7 @@ const SignUp = () => {
           SignUp
         </h1>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div>
             <label className="label" htmlFor="">
               <span className="text-base label-text">Full Name</span>
@@ -18,6 +39,11 @@ const SignUp = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered input-primary w-full max-w-xs"
+              value={inputs.fullName}
+              onChange={(e) =>
+                setInputs({ ...inputs, fullName: e.target.value })
+              }
+              required
             />
           </div>
           <div>
@@ -28,6 +54,11 @@ const SignUp = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered input-primary w-full max-w-xs"
+              value={inputs.username}
+              onChange={(e) =>
+                setInputs({ ...inputs, username: e.target.value })
+              }
+              required
             />
           </div>
           <div>
@@ -38,6 +69,12 @@ const SignUp = () => {
               type="password"
               placeholder="**************"
               className="input input-bordered input-primary w-full max-w-xs"
+              value={inputs.password}
+              onChange={(e) =>
+                setInputs({ ...inputs, password: e.target.value })
+              }
+              required
+              minLength={6}
             />
           </div>
           <div>
@@ -48,36 +85,31 @@ const SignUp = () => {
               type="password"
               placeholder="**************"
               className="input input-bordered input-primary w-full max-w-xs"
+              value={inputs.confirmPassword}
+              onChange={(e) =>
+                setInputs({ ...inputs, confirmPassword: e.target.value })
+              }
+              required
+              minLength={6}
             />
           </div>
 
           {/* Gender check box */}
-          <div className="flex gap-4">
-            <label className="cursor-pointer label">
-              <span className="label-text m-3">Male</span>
-              <input
-                type="checkbox"
-                defaultChecked
-                className="checkbox checkbox-info"
-              />
-            </label>
-            <label className="cursor-pointer label">
-              <span className="label-text m-3">Female</span>
-              <input
-                type="checkbox"
-                defaultChecked
-                className="checkbox checkbox-info"
-              />
-            </label>
-          </div>
-          <a
-            href="#"
+          <GenderCheckBox onchangeHandle={handleCheckBox} selectedGender={inputs.gender}/>
+         
+          <Link
+            to={"/login"}
             className="text-sm hover:underline hover:text-blue-500 mt-2 inline-block"
           >
             Already have an account?
-          </a>
+          </Link>
           <div>
-            <button className="btn btn-block btn-sm mt-2 hover:border-blue-500 border-2">SignUp</button>
+            <button
+              type="submit"
+              className="btn btn-block btn-sm mt-2 hover:border-blue-500 border-2"
+            >
+              SignUp
+            </button>
           </div>
         </form>
       </div>

@@ -49,7 +49,10 @@ export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");  // Error handling || ""
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user?.password || ""
+    ); // Error handling || ""
 
     if (!user || !isPasswordCorrect) {
       return res.status(400).json({ Error: "Invalid username or password" });
@@ -67,11 +70,11 @@ export const login = async (req, res) => {
   }
 };
 
-export const logout =  async(req, res) => {
+export const logout = async (req, res) => {
   try {
-    res.cookie("jwt", "", {maxAge: 0})
+    res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
-    res.status(500).json({Error: "Internal server error"})
+    res.status(500).json({ Error: "Internal server error" });
   }
 };

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../context/AuthContext";
 
 const userSignUp = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {setAuthUser} = useAuthContext();
 
   const signUp = async ({
     fullName,
@@ -31,8 +34,11 @@ const userSignUp = () => {
       });
 
       const data = await res.json();
+      if(data.error){
+        throw new Error(data.error)
+      }
       localStorage.setItem("chat-user", JSON.stringify(data))
-
+      setAuthUser(data)
     } catch (error) {
       toast.error(error.message);
     } finally {

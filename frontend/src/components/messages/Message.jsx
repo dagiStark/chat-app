@@ -1,4 +1,4 @@
-const Message = () => {
+const Message = ({message}) => {
   return (
     <div className="chat chat-end">
       <div className="chat-image avatar">

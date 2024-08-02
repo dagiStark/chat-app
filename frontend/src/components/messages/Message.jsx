@@ -1,22 +1,24 @@
-const Message = ({message}) => {
+import { useAuthContext } from "../../context/AuthContext";
+import PropTypes from "prop-types";
+
+const Message = ({ message }) => {
+  const { authUser } = useAuthContext();
+  const fromMe = message.senderId === authUser._id;
+  const chatClassName = fromMe ? "chat-end" : "chat-start";
+  const bubbleColor = fromMe ? "bg-blue-500" : "";
+
   return (
-    <div className="chat chat-end">
-      <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
-          <img
-            alt="Tailwind CSS chat bubble component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-          />
-        </div>
-      </div>
-      <div className="chat-header">
-        Anakin
-        <time className="text-xs opacity-50">12:46</time>
-      </div>
-      <div className="chat-bubble">I hate you!</div>
-      <div className="chat-footer opacity-50">Seen at 12:46</div>
+    <div className={`chat ${chatClassName} `}>
+      <div className={`chat-bubble text-white  ${bubbleColor}`}>{message.message}</div>
     </div>
   );
 };
 
 export default Message;
+
+Message.propTypes = {
+  message: PropTypes.shape({
+    senderId: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+  }).isRequired,
+};

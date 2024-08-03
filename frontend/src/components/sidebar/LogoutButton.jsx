@@ -1,7 +1,9 @@
 import { BiLogOut } from "react-icons/bi";
 import userLogout from "../../hooks/userLogout";
+
 const LogoutButton = () => {
   const { loading, logout } = userLogout();
+  
   return (
     <div className=" flex mt-auto">
       {!loading ? (

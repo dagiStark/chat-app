@@ -3,9 +3,7 @@ import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
 
 const useLogin = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { setAuthUser } = useAuthContext();
 
   const login = async (username, password) => {

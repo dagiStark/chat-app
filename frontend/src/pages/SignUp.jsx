@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import GenderCheckBox from "./GenderCheckBox";
-import userSignUp from "../../hooks/userSignUp";
+import GenderCheckBox from "./signup/GenderCheckBox";
+import userSignUp from "../hooks/userSignUp";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -11,14 +11,14 @@ const SignUp = () => {
     confirmPassword: "",
     gender: "",
   });
-  const {loading, signUp} = userSignUp();
+  const { loading, signUp } = userSignUp();
 
   const handleCheckBox = (gender) => {
     setInputs({ ...inputs, gender });
   };
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await signUp(inputs)
+    await signUp(inputs);
   };
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
@@ -95,8 +95,11 @@ const SignUp = () => {
           </div>
 
           {/* Gender check box */}
-          <GenderCheckBox onchangeHandle={handleCheckBox} selectedGender={inputs.gender}/>
-         
+          <GenderCheckBox
+            onchangeHandle={handleCheckBox}
+            selectedGender={inputs.gender}
+          />
+
           <Link
             to={"/login"}
             className="text-sm hover:underline hover:text-blue-500 mt-2 inline-block"
@@ -107,9 +110,13 @@ const SignUp = () => {
             <button
               type="submit"
               className="btn btn-block btn-sm mt-2 hover:border-blue-500 border-2"
-              disabled = {loading}
+              disabled={loading}
             >
-              {loading ? <span className="loading loading-spinner"></span> : "SignUp"}
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "SignUp"
+              )}
             </button>
           </div>
         </form>
@@ -117,6 +124,5 @@ const SignUp = () => {
     </div>
   );
 };
-
 
 export default SignUp;

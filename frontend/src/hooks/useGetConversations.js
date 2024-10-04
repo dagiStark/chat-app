@@ -10,11 +10,16 @@ const useGetConversations = () => {
       setLoading(true);
       try {
         const res = await fetch("/api/users");
-        const data = await res.json();
-        if (data.error) {
-          throw new Error(data.error);
+        if (res.status === 401) {
+          // Redirect to login if unauthorized
+          window.location.href = "/login"; // Adjust to your login page route
+        } else {
+          const data = await res.json();
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          setConversations(data);
         }
-        setConversations(data);
       } catch (error) {
         toast.error(error.message);
       } finally {

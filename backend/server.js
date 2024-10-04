@@ -8,6 +8,7 @@ import authRoutes from "./routes/authRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
 import userRouter from "./routes/userRouter.js";
 import connectToDb from "./db/connect.js";
+import cors from "cors";
 
 import { app, server } from "./socket/socket.js";
 
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 // Routes
 app.use("/api/auth", authRoutes);

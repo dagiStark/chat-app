@@ -1,3 +1,4 @@
+
 // eslint-disable-next-line react/prop-types
 const GenderCheckBox = ({ onchangeHandle, selectedGender }) => {
   return (
@@ -40,3 +41,5 @@ const GenderCheckBox = ({ onchangeHandle, selectedGender }) => {
 };
 
 export default GenderCheckBox;
+
+

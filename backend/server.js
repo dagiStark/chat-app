@@ -23,6 +23,9 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRouter);
+app.use("/", (req, res) => {
+  res.send("Hello");
+});
 
 // Start server
 server.listen(PORT, () => {

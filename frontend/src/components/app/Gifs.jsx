@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Gifs() {
-  return (
-    <div>
-        Gifs
-      
-    </div>
-  )
+  return <div>Gifs</div>;
 }
 
-export default Gifs
+export default Gifs;

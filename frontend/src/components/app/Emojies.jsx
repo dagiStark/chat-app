@@ -7,12 +7,13 @@ const Emojies = () => {
   const [currentEmoji, setCurrentEmoji] = useState(null);
 
   return (
-    <div>
-      <div>
+    <div>  
+      <div>  
         <Picker
           data={data}
           previewPosition="none"
           onEmojiSelect={(e) => setCurrentEmoji(e.native)}
+          emojiSize={28}
         />
       </div>
     </div>

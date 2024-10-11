@@ -1,26 +1,19 @@
 import { emojiList } from "../../constants";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
+import { useState } from "react";
 
 const Emojies = () => {
-
+  const [currentEmoji, setCurrentEmoji] = useState(null);
 
   return (
     <div>
-      <h3>Emojies</h3>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          height: "650px", 
-          overflowY: "scroll", 
-          border: "1px solid #ccc", 
-          padding: "10px",
-        }}
-      >
-        {emojiList.map((emoji, index) => (
-          <span key={index} style={{ fontSize: "2rem", margin: "0px" }}>
-            {emoji}
-          </span>
-        ))}
+      <div>
+        <Picker
+          data={data}
+          previewPosition="none"
+          onEmojiSelect={(e) => setCurrentEmoji(e.native)}
+        />
       </div>
     </div>
   );

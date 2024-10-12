@@ -25,7 +25,7 @@ const Login = () => {
         <form action="" onSubmit={handleSubmit}>
           <div>
             <label className="label" htmlFor="">
-              <span className="text-base label-text">username</span>
+              <span className="text-black label-text">username</span>
             </label>
             <input
               type="text"
@@ -37,7 +37,7 @@ const Login = () => {
           </div>
           <div>
             <label className="label" htmlFor="">
-              <span className="text-base label-text">Password</span>
+              <span className="text-black label-text">Password</span>
             </label>
             <input
               type="password"
@@ -50,7 +50,7 @@ const Login = () => {
 
           <Link
             to={"/signup"}
-            className="text-sm hover:underline hover:text-blue-500 mt-2 inline-block"
+            className="text-sm hover:underline hover:text-blue-500 mt-2 inline-block text-black"
           >
             Don&apos;t have account?
           </Link>

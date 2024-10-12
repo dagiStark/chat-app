@@ -5,7 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 const Home = () => {
   return (
     <div
-      className="flex sm:h-[450px] md:h-[700px] md:w-[64.3%] rounded-lg overflow-hidden bg-clip-padding
+      className="flex sm:h-[450px] md:h-[700px] rounded-lg overflow-hidden bg-clip-padding
      backdrop-filter "
     >
       <Sidebar />

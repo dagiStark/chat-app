@@ -1,4 +1,3 @@
-import { BsSend } from "react-icons/bs";
 import useSendMessage from "../../hooks/useSendMessage";
 import { useState } from "react";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
@@ -18,7 +17,7 @@ const MessageInput = () => {
     <form action="" onSubmit={handleSubmit}>
       <div className="w-full relative">
         <div className="flex items-center">
-          <AttachFileIcon />
+          <AttachFileIcon style={{ transform: 'rotate(45deg)' }}/>
           <input
             type="text"
             placeholder="Send a message..."

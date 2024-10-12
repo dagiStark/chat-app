@@ -48,8 +48,16 @@ const MessageInput = () => {
         </div>
       </div>
       {showEmoji && (
-        <div className="absolute top-0 left-0 z-10">
-          <Picker data={data} onEmojiSelect={addEmoji} />
+        <div className="absolute right-[340px] bottom-16 z-10">
+          <Picker
+            data={data}
+            onEmojiSelect={addEmoji}
+            theme="light"
+            autoFocus
+            icons="outline"
+            perLine={7}
+            previewPosition="bottom"
+          />
         </div>
       )}
     </form>

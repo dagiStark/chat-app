@@ -3,9 +3,9 @@ import useConversation from "../../zustad/useConversation";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
-import CallIcon from '@mui/icons-material/Call';
-import PersonIcon from '@mui/icons-material/Person';
-import VideocamIcon from '@mui/icons-material/Videocam';
+import CallIcon from "@mui/icons-material/Call";
+import PersonIcon from "@mui/icons-material/Person";
+import VideocamIcon from "@mui/icons-material/Videocam";
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -15,22 +15,28 @@ const MessageContainer = () => {
   }, [setSelectedConversation]);
 
   return (
-    <div
-      className="md:min-w-[450px] flex flex-col bg-[#ffffff]"
-    >
+    <div className="md:min-w-[450px] flex flex-col bg-[#ffffff]">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
         <>
-          <div className="bg-slate-500 px-4 py-2 mb-2">
-            <span className="label-text">To: </span>
-            <img src={selectedConversation.profilePic} alt="profile picture" />
-            <span className="text-gray-900 font-bold">
-              {selectedConversation.fullName}
-            </span>
-            <CallIcon />
-            <PersonIcon />
-            <VideocamIcon />
+          <div className="bg-[#ffffff] px-4 py-2 mb-2 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-12 rounded-full">
+                <img
+                  src={selectedConversation.profilePic}
+                  alt="profile picture"
+                />
+              </div>
+              <span className="text-gray-900 font-bold">
+                {selectedConversation.fullName}
+              </span>
+            </div>
+            <div className="flex gap-3">
+              <CallIcon />
+              <PersonIcon />
+              <VideocamIcon />
+            </div>
           </div>
           <Messages />
           <MessageInput />

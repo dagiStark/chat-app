@@ -5,11 +5,11 @@ const Message = ({ message }) => {
   const { authUser } = useAuthContext();
   const fromMe = message.senderId === authUser._id;
   const chatClassName = fromMe ? "chat-end" : "chat-start";
-  const bubbleColor = fromMe ? "bg-[#4d38a2]" : "";
+  const bubbleColor = fromMe ? "bg-[#7045a1] text-white" : "bg-[#c7c7c7] text-[#171412]";
 
   return (
-    <div className={`chat ${chatClassName} `}>
-      <div className={`chat-bubble text-white  ${bubbleColor}`}>{message.message}</div>
+    <div className={`chat ${chatClassName}`}>
+      <div className={`chat-bubble  ${bubbleColor}`}>{message.message}</div>
     </div>
   );
 };

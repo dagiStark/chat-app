@@ -9,7 +9,7 @@ const useGetConversations = () => {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/users");
+        const res = await fetch("https://chat-app-api-one-blond.vercel.app/api/users");
         if (res.status === 401) {
           // Redirect to login if unauthorized
           window.location.href = "/login"; // Adjust to your login page route

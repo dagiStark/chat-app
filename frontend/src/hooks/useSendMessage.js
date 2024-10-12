@@ -10,7 +10,7 @@ const useSendMessage = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `/api/messages/send/${selectedConversation._id}`,
+        `https://chat-app-api-one-blond.vercel.app/api/messages/send/${selectedConversation._id}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

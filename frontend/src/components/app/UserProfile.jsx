@@ -1,5 +1,4 @@
 import { Avatar, Button, IconButton, Typography, Divider } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";

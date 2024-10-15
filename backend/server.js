@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chat-app-client-chi-ashen.vercel.app",
+    origin: "https://chat-app-client-lovat.vercel.app",
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
   })
